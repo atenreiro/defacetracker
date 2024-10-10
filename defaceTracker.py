@@ -174,11 +174,11 @@ def main():
     Main function to execute the scraping process.
     """
     print(Fore.GREEN + Style.BRIGHT + """
-    ============================================
-    |        Deface Tracker v1.0.0              |
-    |  (c) Andre Tenreiro                      |
+    ===============================================
+    |        Deface Tracker v1.0.0                |
+    |  (c) Andre Tenreiro                         |
     |  https://github.com/atenreiro/defacetracker |
-    ============================================
+    ===============================================
     """)
 
     parser = argparse.ArgumentParser(description=Fore.CYAN + "Defacement scraper for Zone-Xsec")
