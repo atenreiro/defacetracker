@@ -1,4 +1,4 @@
-# Deface Tracker
+# defaceTracker
 
 ![Deface Tracker](https://img.shields.io/badge/version-1.0.0-green) ![Python](https://img.shields.io/badge/python-3.x-blue) ![License](https://img.shields.io/badge/license-MIT-yellow)
 
@@ -24,7 +24,7 @@ colorama
 You can install the required packages using:
 
 ```bash
-pip install git+https://github.com/atenreiro/defaceTracker
+git clone https://github.com/atenreiro/defaceTracker
 ```
 
 Or clone the repository and install from `requirements.txt`:
