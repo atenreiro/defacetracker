@@ -1,0 +1,142 @@
+[
+    {
+        "Date": "2024-08-31",
+        "Attacker": "YEMEN",
+        "Team": "Team R70",
+        "URL": "ane.gov.mz/index.html",
+        "Mirror": "https://zone-xsec.com/mirror/id/671322"
+    },
+    {
+        "Date": "2024-07-05",
+        "Attacker": "MastaBeen",
+        "Team": "Islamic Cyber Team",
+        "URL": "inage.gov.mz/wp-content/index....",
+        "Mirror": "https://zone-xsec.com/mirror/id/663136"
+    },
+    {
+        "Date": "2024-07-05",
+        "Attacker": "MastaBeen",
+        "Team": "Islamic Cyber Team",
+        "URL": "icm.gov.mz/wp-config.php",
+        "Mirror": "https://zone-xsec.com/mirror/id/663132"
+    },
+    {
+        "Date": "2024-07-05",
+        "Attacker": "ODIYAN",
+        "Team": "TEAM UCC",
+        "URL": "ruralmoc.gov.mz",
+        "Mirror": "https://zone-xsec.com/mirror/id/663081"
+    },
+    {
+        "Date": "2023-11-26",
+        "Attacker": "Boss Ranzen",
+        "Team": "D704T",
+        "URL": "gis.fnds.gov.mz/server/rest/se...",
+        "Mirror": "https://zone-xsec.com/mirror/id/634412"
+    },
+    {
+        "Date": "2023-11-16",
+        "Attacker": "Imkey7",
+        "Team": "INDONESIAN CYBER JAWA",
+        "URL": "mail.cmcmatola.gov.mz",
+        "Mirror": "https://zone-xsec.com/mirror/id/632310"
+    },
+    {
+        "Date": "2023-11-16",
+        "Attacker": "Imkey7",
+        "Team": "INDONESIAN CYBER JAWA",
+        "URL": "cmcmatola.gov.mz",
+        "Mirror": "https://zone-xsec.com/mirror/id/632306"
+    },
+    {
+        "Date": "2023-10-28",
+        "Attacker": "Boss Ranzen",
+        "Team": "GhostExploiterTeam",
+        "URL": "www.mozgis.gov.mz/server/rest/...",
+        "Mirror": "https://zone-xsec.com/mirror/id/629468"
+    },
+    {
+        "Date": "2023-10-24",
+        "Attacker": "mis.style",
+        "Team": "KEJE ARMY",
+        "URL": "dev.mozgis.gov.mz/server/rest/...",
+        "Mirror": "https://zone-xsec.com/mirror/id/628822"
+    },
+    {
+        "Date": "2023-07-10",
+        "Attacker": "Galang10",
+        "Team": "PonorogoXploiter",
+        "URL": "csmj.gov.mz/wp-content/uploads...",
+        "Mirror": "https://zone-xsec.com/mirror/id/611970"
+    },
+    {
+        "Date": "2023-03-02",
+        "Attacker": "ZakSec166",
+        "Team": "IdiotCrew",
+        "URL": "www.ara-sul.gov.mz/auto_seo.ph...",
+        "Mirror": "https://zone-xsec.com/mirror/id/576605"
+    },
+    {
+        "Date": "2023-03-02",
+        "Attacker": "ZakSec166",
+        "Team": "IdiotCrew",
+        "URL": "micultur.gov.mz/wp-content/idi...",
+        "Mirror": "https://zone-xsec.com/mirror/id/576604"
+    },
+    {
+        "Date": "2023-03-02",
+        "Attacker": "ZakSec166",
+        "Team": "IdiotCrew",
+        "URL": "ingd.gov.mz/idiot.html",
+        "Mirror": "https://zone-xsec.com/mirror/id/576603"
+    },
+    {
+        "Date": "2023-03-02",
+        "Attacker": "ZakSec166",
+        "Team": "IdiotCrew",
+        "URL": "csrecm.gov.mz/wp-content/idiot...",
+        "Mirror": "https://zone-xsec.com/mirror/id/576602"
+    },
+    {
+        "Date": "2023-03-02",
+        "Attacker": "ZakSec166",
+        "Team": "IdiotCrew",
+        "URL": "crepg.gov.mz/ifwqftcy.php",
+        "Mirror": "https://zone-xsec.com/mirror/id/576601"
+    },
+    {
+        "Date": "2022-10-12",
+        "Attacker": "Noilesha",
+        "Team": "Demon Alivos itu lammers",
+        "URL": "www.mophrh.gov.mz/wp-content/f...",
+        "Mirror": "https://zone-xsec.com/mirror/id/298257"
+    },
+    {
+        "Date": "2022-10-12",
+        "Attacker": "Noilesha",
+        "Team": "ATOMSEC7",
+        "URL": "mophrh.gov.mz/wp-content/fuck....",
+        "Mirror": "https://zone-xsec.com/mirror/id/298151"
+    },
+    {
+        "Date": "2021-09-27",
+        "Attacker": "KAKEGURAI",
+        "Team": "Evoush666Crew",
+        "URL": "www.arpac.gov.mz/nad.htm",
+        "Mirror": "https://zone-xsec.com/mirror/id/172672"
+    },
+    {
+        "Date": "2021-04-19",
+        "Attacker": "Ehsan",
+        "Team": "Evoush666Crew",
+        "URL": "esuder.uem.mz/anjim121.php",
+        "Mirror": "https://zone-xsec.com/mirror/id/122333"
+    },
+    {
+        "Date": "2020-07-22",
+        "Attacker": "zeerx7",
+        "Team": "XploitSec-ID",
+        "URL": "www.cea.uem.mz/ze.html",
+        "Mirror": "https://zone-xsec.com/mirror/id/30730"
+    }
+]
