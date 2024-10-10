@@ -24,6 +24,12 @@ colorama
 You can install the required packages using:
 
 ```bash
+pip install git+https://github.com/atenreiro/defaceTracker
+```
+
+Or clone the repository and install from `requirements.txt`:
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -73,6 +79,6 @@ Sample output file (`CSV` format):
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
-Developed by [Andre Tenreiro](https://github.com/atenreiro).
+Developed by [Andre Tenreiro](https://www.linkedin.com/in/andretenreiro/).
 
 For any questions, please feel free to reach out or open an issue on the GitHub repository.
