@@ -1,6 +1,7 @@
 # defaceTracker
 
 ![Deface Tracker](https://img.shields.io/badge/version-1.0.0-green) ![Python](https://img.shields.io/badge/python-3.x-blue) ![License](https://img.shields.io/badge/license-MIT-yellow)
+![alt text](https://raw.githubusercontent.com/atenreiro/defaceTracker/master/screenshot.png)
 
 Deface Tracker is a Python script that scrapes defacement information from [Zone-Xsec](https://zone-xsec.com) and saves the data to CSV or JSON format. This script helps you gather historical website defacement data easily.
 
