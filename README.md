@@ -1,6 +1,7 @@
+
 # defaceTracker
 
-![Deface Tracker](https://img.shields.io/badge/version-1.0.0-green) ![Python](https://img.shields.io/badge/python-3.x-blue) ![License](https://img.shields.io/badge/license-MIT-yellow)
+![Deface Tracker](https://img.shields.io/badge/version-1.0.1-green) ![Python](https://img.shields.io/badge/python-3.x-blue) ![License](https://img.shields.io/badge/license-MIT-yellow)
 ![alt text](https://raw.githubusercontent.com/atenreiro/defaceTracker/master/screenshot.png)
 
 Deface Tracker is a Python script that scrapes defacement information from [Zone-Xsec](https://zone-xsec.com) and saves the data to CSV or JSON format. This script helps you gather historical website defacement data easily.
@@ -9,6 +10,7 @@ Deface Tracker is a Python script that scrapes defacement information from [Zone
 - Scrape defacement information from Zone-Xsec, including attacker, team, URL, and mirror link.
 - Support for scraping multiple pages.
 - User-friendly logging with colored outputs.
+- Option to scrape a specific domain using the `--domain` flag.
 - Saves output to CSV or JSON format.
 
 ## Requirements
@@ -43,6 +45,7 @@ python3 defaceTracker.py [options]
 
 ### Options
 - `-t, --tld` : Specify the TLD to scrape (e.g., `MZ`). Default is `archive`.
+- `-d, --domain` : Specify a Fully Qualified Domain Name (FQDN) to search for (e.g., `example.com`).
 - `-f, --format` : Output format (`csv` or `json`). Default is `csv`.
 - `-o, --output` : Output file name. If not specified, the default will be `<ddmmyyyy>_<tld>.<format>`.
 - `-p, --pages` : Number of pages to scrape (maximum 5). Default is `1`.
@@ -59,6 +62,10 @@ python3 defaceTracker.py [options]
 - Scrape 3 pages of defacements for Singapore (`SG`) in CSV format:
   ```bash
   python3 defaceTracker.py -t SG -p 3
+  ```
+- Search for defacements related to a specific domain (`example.com`) and save the results:
+  ```bash
+  python3 defaceTracker.py -d example.com -f json -o domain_defacements.json
   ```
 
 ## Logging
