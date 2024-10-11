@@ -6,6 +6,7 @@ import sys
 import time
 from datetime import datetime
 from typing import List, Dict
+import re
 
 import pandas as pd
 import requests
@@ -58,6 +59,23 @@ def get_random_user_agent() -> str:
     selected_ua = random.choice(user_agents)
     logging.info(Fore.CYAN + "Selected a random User-Agent.")
     return selected_ua
+
+def is_valid_fqdn(domain: str) -> bool:
+    """
+    Validates if the provided string is a valid Fully Qualified Domain Name (FQDN).
+
+    Args:
+        domain (str): The domain string to validate.
+
+    Returns:
+        bool: True if valid, False otherwise.
+    """
+    fqdn_regex = re.compile(
+        r'^(?=.{1,253}$)'
+        r'((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+'  # Subdomain(s)
+        r'[A-Za-z]{2,63}$'  # Top-level domain
+    )
+    return bool(fqdn_regex.match(domain))
 
 def scrape_defacements(url: str) -> List[Dict[str, str]]:
     """
@@ -175,30 +193,73 @@ def main():
     """
     print(Fore.GREEN + Style.BRIGHT + """
     ===============================================
-    |        Deface Tracker v1.0.0                |
+    |        Deface Tracker v1.0.1                |
     |  (c) Andre Tenreiro                         |
     |  https://github.com/atenreiro/defacetracker |
     ===============================================
     """)
 
     parser = argparse.ArgumentParser(description=Fore.CYAN + "Defacement scraper for Zone-Xsec")
-    parser.add_argument("--tld", "-t", type=str, default="archive", help=Fore.YELLOW + "Specify the TLD to scrape (e.g., MZ)")
-    parser.add_argument("--format", "-f", type=str, default="csv", choices=["csv", "json"], help=Fore.YELLOW + "Output format: csv or json")
-    parser.add_argument("--output", "-o", type=str, help=Fore.YELLOW + "Output file name")
-    parser.add_argument("--pages", "-p", type=int, default=1, choices=range(1, 6), help=Fore.YELLOW + "Number of pages to scrape (max 5)")
+
+    # Create a mutually exclusive group for --tld and --domain
+    group = parser.add_mutually_exclusive_group()
+
+    group.add_argument(
+        "--tld", "-t",
+        type=str,
+        default="archive",
+        help=Fore.YELLOW + "Specify the TLD to scrape (e.g., MZ)"
+    )
+
+    group.add_argument(
+        "--domain", "-d",
+        type=str,
+        help=Fore.YELLOW + "Specify the FQDN to search for (e.g., example.com)"
+    )
+
+    parser.add_argument(
+        "--format", "-f",
+        type=str,
+        default="csv",
+        choices=["csv", "json"],
+        help=Fore.YELLOW + "Output format: csv or json"
+    )
+    parser.add_argument(
+        "--output", "-o",
+        type=str,
+        help=Fore.YELLOW + "Output file name"
+    )
+    parser.add_argument(
+        "--pages", "-p",
+        type=int,
+        default=1,
+        choices=range(1, 6),
+        help=Fore.YELLOW + "Number of pages to scrape (max 5)"
+    )
     args = parser.parse_args()
 
     setup_logging()
     start_time = time.time()
 
-    tld = args.tld.upper()
-    base_url = f"https://zone-xsec.com/country/{tld}" if tld != "ARCHIVE" else "https://zone-xsec.com/archive"
+    # Determine the base URL based on the provided arguments
+    if args.domain:
+        # Validate the domain format
+        if not is_valid_fqdn(args.domain):
+            logging.error(Fore.RED + f"❌ Invalid domain format: {args.domain}")
+            sys.exit(1)
+        base_url = f"https://zone-xsec.com/search/q={args.domain}"
+        logging.info(Fore.CYAN + f"🔍 Searching for domain: {args.domain}")
+    else:
+        tld = args.tld.upper()
+        base_url = f"https://zone-xsec.com/country/{tld}" if tld != "ARCHIVE" else "https://zone-xsec.com/archive"
+        logging.info(Fore.CYAN + f"🌐 Scraping TLD: {tld}")
 
     if args.output:
         output_file = args.output
     else:
         date_str = datetime.now().strftime("%d%m%Y")
-        output_file = f"{date_str}_{tld.lower()}.{args.format}"
+        identifier = args.domain if args.domain else tld.lower()
+        output_file = f"{date_str}_{identifier}.{args.format}"
 
     logging.info(Fore.CYAN + "🚀 Starting the scraping process")
 
@@ -209,12 +270,19 @@ def main():
         all_data.extend(page_data)
 
         # Check if there are more pages available
-        soup = BeautifulSoup(requests.get(url).text, 'html.parser')
-        pagination = soup.find('ul', {'class': lambda x: x and 'pagination' in x})
-        if pagination:
-            last_page = max([int(a.get_text()) for a in pagination.find_all('a') if a.get_text().isdigit()])
-            if page >= last_page:
-                break
+        try:
+            response = requests.get(url, headers={"User-Agent": get_random_user_agent()}, timeout=10)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+            pagination = soup.find('ul', {'class': lambda x: x and 'pagination' in x})
+            if pagination:
+                last_page = max([int(a.get_text()) for a in pagination.find_all('a') if a.get_text().isdigit()])
+                if page >= last_page:
+                    logging.info(Fore.GREEN + "📄 Reached the last available page.")
+                    break
+        except Exception as e:
+            logging.warning(Fore.YELLOW + f"⚠️ Could not determine pagination: {e}")
+            break
 
     save_data(all_data, output_file, args.format)
 
